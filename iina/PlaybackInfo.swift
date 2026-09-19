@@ -181,6 +181,13 @@ class PlaybackInfo {
 
   var abLoopStatus: LoopStatus = .cleared
 
+  /// Start of the clip selected by the user in seconds, `nil` if not marked. See `ClipSelection.swift`.
+  var clipStart: Double?
+  /// End of the clip selected by the user in seconds, `nil` if not marked.
+  var clipEnd: Double?
+  /// `True` while a clip is being saved.
+  var isExportingClip = false
+
   /** Selected track IDs. Use these (instead of `isSelected` of a track) to check if selected */
   @Atomic var aid: Int?
   @Atomic var sid: Int?

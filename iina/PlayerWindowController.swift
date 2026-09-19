@@ -332,6 +332,12 @@ class PlayerWindowController: NSWindowController, NSWindowDelegate {
   override func keyDown(with event: NSEvent) {
     let keyCode = KeyCodeHelper.mpvKeyCode(from: event)
     let normalizedKeyCode = KeyCodeHelper.normalizeMpv(keyCode)
+
+    // ESC first clears the clip selection, then does what it is bound to.
+    if normalizedKeyCode == "ESC", player.hasClipSelection {
+      player.clearClipSelection()
+      return
+    }
     
     PluginInputManager.handle(
       input: normalizedKeyCode, event: .keyDown, player: player,
@@ -702,6 +708,14 @@ class PlayerWindowController: NSWindowController, NSWindowDelegate {
       menuActionHandler.menuDeleteCurrentFile(.dummy)
     case .deleteCurrentFileHard:
       menuActionHandler.menuDeleteCurrentFileHard(.dummy)
+    case .clipMarkIn:
+      player.markClipStart()
+    case .clipMarkOut:
+      player.markClipEnd()
+    case .clipExport:
+      player.exportClip()
+    case .clipClear:
+      player.clearClipSelection()
     default:
       break
     }

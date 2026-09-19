@@ -112,6 +112,15 @@ class MenuController: NSObject, NSMenuDelegate {
   @IBOutlet weak var advancedScreenshot: NSMenuItem!
   @IBOutlet weak var abLoop: NSMenuItem!
   @IBOutlet weak var fileLoop: NSMenuItem!
+  // Clip selection items, created in code rather than in MainMenu.xib.
+  let clipMarkIn = NSMenuItem(title: NSLocalizedString("menu.clip_mark_in", value: "Set Clip Start",
+                                                       comment: "Set Clip Start"), action: nil, keyEquivalent: "")
+  let clipMarkOut = NSMenuItem(title: NSLocalizedString("menu.clip_mark_out", value: "Set Clip End",
+                                                        comment: "Set Clip End"), action: nil, keyEquivalent: "")
+  let clipExport = NSMenuItem(title: NSLocalizedString("menu.clip_export", value: "Save Clip",
+                                                       comment: "Save Clip"), action: nil, keyEquivalent: "")
+  let clipClear = NSMenuItem(title: NSLocalizedString("menu.clip_clear", value: "Clear Clip Selection",
+                                                      comment: "Clear Clip Selection"), action: nil, keyEquivalent: "")
   @IBOutlet weak var playlistPanel: NSMenuItem!
   @IBOutlet weak var playlist: NSMenuItem!
   @IBOutlet weak var playlistLoop: NSMenuItem!
@@ -262,6 +271,16 @@ class MenuController: NSObject, NSMenuDelegate {
     // -- list and chapter
     abLoop.action = #selector(MainMenuActionHandler.menuABLoop(_:))
     fileLoop.action = #selector(MainMenuActionHandler.menuFileLoop(_:))
+
+    // -- clip
+    clipMarkIn.action = #selector(MainMenuActionHandler.menuClipMarkIn(_:))
+    clipMarkOut.action = #selector(MainMenuActionHandler.menuClipMarkOut(_:))
+    clipExport.action = #selector(MainMenuActionHandler.menuClipExport(_:))
+    clipClear.action = #selector(MainMenuActionHandler.menuClipClear(_:))
+    let clipItemsIndex = playbackMenu.index(of: fileLoop) + 1
+    for item in [NSMenuItem.separator(), clipMarkIn, clipMarkOut, clipExport, clipClear].reversed() {
+      playbackMenu.insertItem(item, at: clipItemsIndex)
+    }
     playlistMenu.delegate = self
     chapterMenu.delegate = self
     playlistLoop.action = #selector(MainMenuActionHandler.menuPlaylistLoop(_:))
@@ -863,6 +882,10 @@ class MenuController: NSObject, NSMenuDelegate {
       (fitToScreen, true, [IINACommand.fitToScreen.rawValue], false, nil, nil),
       (miniPlayer, true, [IINACommand.toggleMusicMode.rawValue], false, nil, nil),
       (pictureInPicture, true, [IINACommand.togglePIP.rawValue], false, nil, nil),
+      (clipMarkIn, true, [IINACommand.clipMarkIn.rawValue], false, nil, nil),
+      (clipMarkOut, true, [IINACommand.clipMarkOut.rawValue], false, nil, nil),
+      (clipExport, true, [IINACommand.clipExport.rawValue], false, nil, nil),
+      (clipClear, true, [IINACommand.clipClear.rawValue], false, nil, nil),
       (cycleVideoTracks, false, ["cycle", "video"], false, nil, nil),
       (cycleAudioTracks, false, ["cycle", "audio"], false, nil, nil),
       (cycleSubtitles, false, ["cycle", "sub"], false, nil, nil),

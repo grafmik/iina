@@ -58,6 +58,15 @@ enum OSDMessage {
   case screenshot
   case abLoop(PlaybackInfo.LoopStatus)
   case abLoopUpdate(PlaybackInfo.LoopStatus, String)
+  case clipStart(String)  // position
+  case clipEnd(String)  // position
+  case clipCleared
+  case clipNotSelected
+  case clipNotLocalFile
+  case clipExportInProgress
+  case clipExporting(Double)  // fraction written
+  case clipExported(String)  // filename
+  case clipExportFailed(String)  // reason
   case stop
   case chapter(String)
   case track(MPVTrack)
@@ -116,6 +125,12 @@ enum OSDMessage {
   var alwaysEnabled: Bool {
     switch self {
     case .canceled: fallthrough
+    case .clipExportFailed: fallthrough
+    case .clipExportInProgress: fallthrough
+    case .clipExported: fallthrough
+    case .clipExporting: fallthrough
+    case .clipNotLocalFile: fallthrough
+    case .clipNotSelected: fallthrough
     case .cannotConnect: fallthrough
     case .cannotLogin: fallthrough
     case .downloadedSub: fallthrough
@@ -297,6 +312,41 @@ enum OSDMessage {
         return (NSLocalizedString("osd.abloop.b", comment: "AB-Loop: B"),
                 .withLeftToRightText("\(position) / {{duration}}"))
       }
+
+    case .clipStart(let position):
+      return (NSLocalizedString("osd.clip.start", value: "Clip Start", comment: "Clip Start"),
+              .withLeftToRightText("\(position) / {{duration}}"))
+
+    case .clipEnd(let position):
+      return (NSLocalizedString("osd.clip.end", value: "Clip End", comment: "Clip End"),
+              .withLeftToRightText("\(position) / {{duration}}"))
+
+    case .clipCleared:
+      return (NSLocalizedString("osd.clip.cleared", value: "Clip Selection Cleared", comment: "Clip Selection Cleared"),
+              .normal)
+
+    case .clipNotSelected:
+      return (NSLocalizedString("osd.clip.not_selected", value: "No Clip Selected", comment: "No Clip Selected"),
+              .normal)
+
+    case .clipNotLocalFile:
+      return (NSLocalizedString("osd.clip.not_local_file", value: "Only Clips of Local Files Can Be Saved",
+                                comment: "Only Clips of Local Files Can Be Saved"), .normal)
+
+    case .clipExportInProgress:
+      return (NSLocalizedString("osd.clip.export_in_progress", value: "A Clip Is Already Being Saved",
+                                comment: "A Clip Is Already Being Saved"), .normal)
+
+    case .clipExporting(let fraction):
+      return (NSLocalizedString("osd.clip.exporting", value: "Saving Clip…", comment: "Saving Clip…"),
+              .withProgress(fraction))
+
+    case .clipExported(let filename):
+      return (NSLocalizedString("osd.clip.exported", value: "Clip Saved", comment: "Clip Saved"), .withText(filename))
+
+    case .clipExportFailed(let reason):
+      return (NSLocalizedString("osd.clip.export_failed", value: "Cannot Save Clip", comment: "Cannot Save Clip"),
+              .withText(reason))
 
     case .stop:
       return (NSLocalizedString("osd.stop", comment: "Stop"), .normal)

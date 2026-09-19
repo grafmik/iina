@@ -2001,6 +2001,8 @@ class PlayerCore: NSObject {
     info.justStartedFile = true
     info.disableOSDForFileLoading = true
     currentMediaIsAudio = .unknown
+    // A clip selection belongs to the file it was made in.
+    clearClipSelection(showOSD: false)
 
     info.currentURL = path.contains("://") ?
       URL(string: path.addingPercentEncoding(withAllowedCharacters: .urlAllowed) ?? path) :
