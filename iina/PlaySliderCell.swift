@@ -32,6 +32,7 @@ class PlaySliderCell: NSSliderCell {
   private var knobActiveColor = NSColor.mainSliderKnobActive
   private var barColorLeft = NSColor.mainSliderBarLeft
   private var barColorRight = NSColor.mainSliderBarRight
+  private var clipColor = NSColor.systemOrange
 
   var drawChapters = Preference.bool(for: .showChapterPos)
 
@@ -168,6 +169,44 @@ class PlaySliderCell: NSSliderCell {
     barColorRight.setFill()
     path.fill()
     NSGraphicsContext.restoreGraphicsState()
+
+    drawClipSelection(in: barRect, path: path, chapterClip: chapterClip, knobPos: knobPos)
+  }
+
+  /// Draws the clip selected by the user in orange over the bar.
+  ///
+  /// When only the start of the clip is marked the selection extends to the end of the bar, when only the end is marked it extends
+  /// from the beginning of the bar. The part of the clip already played is opaque and the rest translucent, so the progress remains
+  /// visible.
+  private func drawClipSelection(in barRect: NSRect, path: NSBezierPath, chapterClip: NSBezierPath, knobPos: CGFloat) {
+    let info = playerCore.info
+    guard info.clipStart != nil || info.clipEnd != nil,
+          let duration = info.videoDuration?.second, duration > 0 else { return }
+
+    // Place the marks where the center of the knob is when playing at those times.
+    let effectiveBarWidth = barRect.width - knobWidth
+    func position(of seconds: Double) -> CGFloat {
+      barRect.origin.x + knobWidth / 2 + CGFloat((seconds / duration).clamped(to: 0...1)) * effectiveBarWidth
+    }
+    let startX = info.clipStart.map(position) ?? barRect.minX
+    let endX = info.clipEnd.map(position) ?? barRect.maxX
+    guard endX > startX else { return }
+
+    let playedX = min(max(knobPos + knobWidth / 2, startX), endX)
+    let parts = [
+      (NSRect(x: startX, y: barRect.origin.y, width: playedX - startX, height: barRect.height), clipColor),
+      (NSRect(x: playedX, y: barRect.origin.y, width: endX - playedX, height: barRect.height),
+       clipColor.withAlphaComponent(0.5))
+    ]
+    for (rect, color) in parts where rect.width > 0 {
+      NSGraphicsContext.saveGraphicsState()
+      let clip = NSBezierPath(rect: rect)
+      clip.append(chapterClip.reversed)
+      clip.addClip()
+      color.setFill()
+      path.fill()
+      NSGraphicsContext.restoreGraphicsState()
+    }
   }
 
   // MARK:- Tracking the Mouse

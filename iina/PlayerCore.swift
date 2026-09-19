@@ -2083,6 +2083,8 @@ class PlayerCore: NSObject {
     MemoryUsage.shared.logUsage("after file started")
     info.justStartedFile = true
     info.disableOSDForFileLoading = true
+    // A clip selection belongs to the file it was made in.
+    clearClipSelection(showOSD: false)
 
     info.currentURL = path.contains("://") ?
       URL(string: path.addingPercentEncoding(withAllowedCharacters: .urlAllowed) ?? path) :

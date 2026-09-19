@@ -254,6 +254,8 @@
 		84F5D4A21E4796F50060A838 /* KeyBindingTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F5D4A11E4796F50060A838 /* KeyBindingTranslator.swift */; };
 		84F7258F1D486185000DEF1B /* MPVProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F7258E1D486185000DEF1B /* MPVProperty.swift */; };
 		84FBCB381EEACDDD0076C77C /* FFmpegController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FBCB371EEACDDD0076C77C /* FFmpegController.m */; };
+		57F0E9C444175510E3FA37DE /* ClipExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 260D56A91BFECC61F1BE8694 /* ClipExporter.m */; };
+		6270833FC2E6A275542EF1CD /* ClipSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928DED626802871FE3DC608 /* ClipSelection.swift */; };
 		84FBF23E1EF06A90003EA491 /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FBF23D1EF06A90003EA491 /* ThumbnailCache.swift */; };
 		8F49C36E213EFB7E0076C4F9 /* MiniPlayerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F49C370213EFB7E0076C4F9 /* MiniPlayerWindowController.xib */; };
 		9E47DAC01E3CFA6D00457420 /* DurationDisplayTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E47DABF1E3CFA6D00457420 /* DurationDisplayTextField.swift */; };
@@ -1476,6 +1478,9 @@
 		84F7258E1D486185000DEF1B /* MPVProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPVProperty.swift; sourceTree = "<group>"; };
 		84FBCB361EEACDDD0076C77C /* FFmpegController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFmpegController.h; sourceTree = "<group>"; };
 		84FBCB371EEACDDD0076C77C /* FFmpegController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFmpegController.m; sourceTree = "<group>"; };
+		D9D8EFEF1BA9501131BC12EB /* ClipExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipExporter.h; sourceTree = "<group>"; };
+		260D56A91BFECC61F1BE8694 /* ClipExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipExporter.m; sourceTree = "<group>"; };
+		D928DED626802871FE3DC608 /* ClipSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipSelection.swift; sourceTree = "<group>"; };
 		84FBF23D1EF06A90003EA491 /* ThumbnailCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
 		875FDF9E2157873300F7F7FD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PrefUtilsViewController.strings; sourceTree = "<group>"; };
 		875FDFA02157874B00F7F7FD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PrefOSCToolbarSettingsSheetController.strings; sourceTree = "<group>"; };
@@ -2210,6 +2215,9 @@
 				84C6D3611EAF8D63009BF721 /* HistoryController.swift */,
 				84FBCB361EEACDDD0076C77C /* FFmpegController.h */,
 				84FBCB371EEACDDD0076C77C /* FFmpegController.m */,
+				D9D8EFEF1BA9501131BC12EB /* ClipExporter.h */,
+				260D56A91BFECC61F1BE8694 /* ClipExporter.m */,
+				D928DED626802871FE3DC608 /* ClipSelection.swift */,
 				842904E11F0EC01600478376 /* AutoFileMatcher.swift */,
 				846121BC1F35FCA500ABB39C /* DraggingDetect.swift */,
 				5114FA932DC704CE00D02435 /* NowPlayingInfoManager.swift */,
@@ -3060,6 +3068,8 @@
 				E392B8CC2FB2263F005F2C24 /* SettingsSearch.swift in Sources */,
 				E3FF5AC02938582F0019CE45 /* JavascriptDevTool.swift in Sources */,
 				84FBCB381EEACDDD0076C77C /* FFmpegController.m in Sources */,
+				57F0E9C444175510E3FA37DE /* ClipExporter.m in Sources */,
+				6270833FC2E6A275542EF1CD /* ClipSelection.swift in Sources */,
 				84879A981E0FFC7E0004F894 /* PrefUIViewController.swift in Sources */,
 				84C6D3641EB276E9009BF721 /* PlaybackHistory.swift in Sources */,
 				E3CB258F222799B800A62C47 /* MPVHook.swift in Sources */,

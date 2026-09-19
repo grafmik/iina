@@ -38,4 +38,9 @@ enum IINACommand: String {
   case findOnlineSubs = "find-online-subs"
   case saveDownloadedSub = "save-downloaded-sub"
 
+  case clipMarkIn = "clip-mark-in"
+  case clipMarkOut = "clip-mark-out"
+  case clipExport = "clip-export"
+  case clipClear = "clip-clear"
+
 }

@@ -57,6 +57,10 @@
 "iina.delete-current-file-hard" = "Supprimer le fichier en cours sans passer par la corbeille";
 "iina.find-online-subs" = "Trouver des sous-titres en ligne";
 "iina.save-downloaded-sub" = "Sauvegarder les sous-titres téléchargés";
+"iina.clip-mark-in" = "Définir le début de l'extrait";
+"iina.clip-mark-out" = "Définir la fin de l'extrait";
+"iina.clip-export" = "Enregistrer l'extrait";
+"iina.clip-clear" = "Désélectionner l'extrait";
 
 "yes" = "Oui";
 "no" = "Non";

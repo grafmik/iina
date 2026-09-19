@@ -57,6 +57,10 @@
 "iina.delete-current-file-hard" = "Delete current file directly without moving to trash";
 "iina.find-online-subs" = "Find online subtitles";
 "iina.save-downloaded-sub" = "Save downloaded subtitle";
+"iina.clip-mark-in" = "Set clip start";
+"iina.clip-mark-out" = "Set clip end";
+"iina.clip-export" = "Save clip";
+"iina.clip-clear" = "Clear clip selection";
 
 "yes" = "Yes";
 "no" = "No";

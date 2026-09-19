@@ -150,6 +150,22 @@ extension MainMenuActionHandler {
     player.mainWindow.abLoop()
   }
 
+  @objc func menuClipMarkIn(_ sender: NSMenuItem) {
+    player.markClipStart()
+  }
+
+  @objc func menuClipMarkOut(_ sender: NSMenuItem) {
+    player.markClipEnd()
+  }
+
+  @objc func menuClipExport(_ sender: NSMenuItem) {
+    player.exportClip()
+  }
+
+  @objc func menuClipClear(_ sender: NSMenuItem) {
+    player.clearClipSelection()
+  }
+
   @objc func menuFileLoop(_ sender: NSMenuItem) {
     player.toggleFileLoop()
   }
@@ -473,6 +489,12 @@ extension MainMenuActionHandler {
     switch menuItem.action {
     case #selector(menuDeleteCurrentFile(_:)), #selector(menuShowCurrentFileInFinder(_:)):
       return player.info.currentURL != nil && !player.info.isNetworkResource
+    case #selector(menuClipMarkIn(_:)), #selector(menuClipMarkOut(_:)):
+      return player.info.state.loaded
+    case #selector(menuClipExport(_:)):
+      return player.hasClipSelection && !player.info.isNetworkResource && !player.info.isExportingClip
+    case #selector(menuClipClear(_:)):
+      return player.hasClipSelection
     default:
       break
     }

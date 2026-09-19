@@ -64,6 +64,11 @@ class KeyBindingDataLoader {
     KBI("find-online-subs", type: .iinaCmd),
     KBI("save-downloaded-sub", type: .iinaCmd),
     KBI.separator(),
+    KBI("clip-mark-in", type: .iinaCmd),
+    KBI("clip-mark-out", type: .iinaCmd),
+    KBI("clip-export", type: .iinaCmd),
+    KBI("clip-clear", type: .iinaCmd),
+    KBI.separator(),
     KBI("write-watch-later-config"),
     KBI("stop"),
     KBI("quit")
