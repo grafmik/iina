@@ -60,6 +60,7 @@
 "iina.clip-mark-in" = "Définir le début de l'extrait";
 "iina.clip-mark-out" = "Définir la fin de l'extrait";
 "iina.clip-export" = "Enregistrer l'extrait";
+"iina.clip-export-share" = "Enregistrer l'extrait pour partager";
 "iina.clip-clear" = "Désélectionner l'extrait";
 
 "yes" = "Oui";

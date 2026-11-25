@@ -162,6 +162,10 @@ extension MainMenuActionHandler {
     player.exportClip()
   }
 
+  @objc func menuClipExportShare(_ sender: NSMenuItem) {
+    player.exportClip(forSharing: true)
+  }
+
   @objc func menuClipClear(_ sender: NSMenuItem) {
     player.clearClipSelection()
   }
@@ -491,7 +495,7 @@ extension MainMenuActionHandler {
       return player.info.currentURL != nil && !player.info.isNetworkResource
     case #selector(menuClipMarkIn(_:)), #selector(menuClipMarkOut(_:)):
       return player.info.state.loaded
-    case #selector(menuClipExport(_:)):
+    case #selector(menuClipExport(_:)), #selector(menuClipExportShare(_:)):
       return player.hasClipSelection && !player.info.isNetworkResource && !player.info.isExportingClip
     case #selector(menuClipClear(_:)):
       return player.hasClipSelection

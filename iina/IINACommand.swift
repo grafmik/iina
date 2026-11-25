@@ -41,6 +41,7 @@ enum IINACommand: String {
   case clipMarkIn = "clip-mark-in"
   case clipMarkOut = "clip-mark-out"
   case clipExport = "clip-export"
+  case clipExportShare = "clip-export-share"
   case clipClear = "clip-clear"
 
 }

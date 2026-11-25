@@ -125,10 +125,12 @@
 "osd.clip.not_local_file" = "Only Clips of Local Files Can Be Saved";
 "osd.clip.export_in_progress" = "A Clip Is Already Being Saved";
 "osd.clip.exporting" = "Saving Clip…";
+"osd.clip.exporting_share" = "Saving Clip for Sharing…";
 "osd.clip.exported" = "Clip Saved";
 "osd.clip.export_failed" = "Cannot Save Clip";
 "clip.error.open" = "The file cannot be read";
 "clip.error.write" = "The clip cannot be written";
+"clip.error.encode" = "The clip cannot be encoded";
 "clip.error.create" = "The clip file cannot be created";
 "clip.error.no_stream" = "The file has no video or audio stream that can be copied";
 "clip.error.empty" = "The selection contains nothing to copy";
@@ -220,6 +222,7 @@
 "menu.clip_mark_in" = "Set Clip Start";
 "menu.clip_mark_out" = "Set Clip End";
 "menu.clip_export" = "Save Clip";
+"menu.clip_export_share" = "Save Clip for Sharing";
 "menu.clip_clear" = "Clear Clip Selection";
 "menu.chapters" = "Show Chapters Panel";
 "menu.hide_chapters" = "Hide Chapters Panel";

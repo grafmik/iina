@@ -67,6 +67,7 @@ class KeyBindingDataLoader {
     KBI("clip-mark-in", type: .iinaCmd),
     KBI("clip-mark-out", type: .iinaCmd),
     KBI("clip-export", type: .iinaCmd),
+    KBI("clip-export-share", type: .iinaCmd),
     KBI("clip-clear", type: .iinaCmd),
     KBI.separator(),
     KBI("write-watch-later-config"),

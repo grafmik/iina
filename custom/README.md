@@ -14,6 +14,7 @@ Differences from the IINA defaults worth knowing:
 | ⇧⌥D (`Alt+D`) | Delete current file (move to Trash) |
 | ⌫ (`BS`) | Reset speed to 1.0 (replaces ⌘\\) |
 | ⌥X / ⌥C / ⌥S | Clip: mark in / mark out / save (needs this branch's build) |
+| ⇧⌥S (`Alt+S`) | Clip: save for sharing, as an MP4 Telegram plays, subtitles drawn on the video (needs this branch's build) |
 
 In this format an uppercase letter means Shift: `Alt+D` is ⇧⌥D, `Meta+D` is ⌘⇧D.
 

@@ -81,6 +81,8 @@ class MPVTrack: NSObject {
   var isSelected: Bool
   var isExternal: Bool
   var externalFilename: String?
+  /// Index of the track among the streams of its file, as numbered by FFmpeg.
+  var ffIndex: Int?
   var codec: String?
   var demuxW: Int?
   var demuxH: Int?
@@ -185,6 +187,7 @@ class MPVTrack: NSObject {
     lang = dict["lang"] as? String
     codec = dict["codec"] as? String
     externalFilename = dict["external-filename"] as? String
+    ffIndex = MPVController.nodeValueAsInt(dict["ff-index"])
     isAlbumart = dict["albumart"] as? Bool ?? false
     decoderDesc = dict["decoder-desc"] as? String
     demuxW = MPVController.nodeValueAsInt(dict["demux-w"])

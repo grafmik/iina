@@ -119,6 +119,8 @@ class MenuController: NSObject, NSMenuDelegate {
                                                         comment: "Set Clip End"), action: nil, keyEquivalent: "")
   let clipExport = NSMenuItem(title: NSLocalizedString("menu.clip_export", value: "Save Clip",
                                                        comment: "Save Clip"), action: nil, keyEquivalent: "")
+  let clipExportShare = NSMenuItem(title: NSLocalizedString("menu.clip_export_share", value: "Save Clip for Sharing",
+                                                            comment: "Save Clip for Sharing"), action: nil, keyEquivalent: "")
   let clipClear = NSMenuItem(title: NSLocalizedString("menu.clip_clear", value: "Clear Clip Selection",
                                                       comment: "Clear Clip Selection"), action: nil, keyEquivalent: "")
   @IBOutlet weak var playlistPanel: NSMenuItem!
@@ -280,9 +282,10 @@ class MenuController: NSObject, NSMenuDelegate {
     clipMarkIn.action = #selector(MainMenuActionHandler.menuClipMarkIn(_:))
     clipMarkOut.action = #selector(MainMenuActionHandler.menuClipMarkOut(_:))
     clipExport.action = #selector(MainMenuActionHandler.menuClipExport(_:))
+    clipExportShare.action = #selector(MainMenuActionHandler.menuClipExportShare(_:))
     clipClear.action = #selector(MainMenuActionHandler.menuClipClear(_:))
     let clipItemsIndex = playbackMenu.index(of: fileLoop) + 1
-    for item in [NSMenuItem.separator(), clipMarkIn, clipMarkOut, clipExport, clipClear].reversed() {
+    for item in [NSMenuItem.separator(), clipMarkIn, clipMarkOut, clipExport, clipExportShare, clipClear].reversed() {
       playbackMenu.insertItem(item, at: clipItemsIndex)
     }
     playlistMenu.delegate = self
@@ -917,6 +920,7 @@ class MenuController: NSObject, NSMenuDelegate {
       (clipMarkIn, true, [IINACommand.clipMarkIn.rawValue], false, nil, nil),
       (clipMarkOut, true, [IINACommand.clipMarkOut.rawValue], false, nil, nil),
       (clipExport, true, [IINACommand.clipExport.rawValue], false, nil, nil),
+      (clipExportShare, true, [IINACommand.clipExportShare.rawValue], false, nil, nil),
       (clipClear, true, [IINACommand.clipClear.rawValue], false, nil, nil),
       (cycleVideoTracks, false, ["cycle", "video"], false, nil, nil),
       (cycleAudioTracks, false, ["cycle", "audio"], false, nil, nil),

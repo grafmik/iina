@@ -736,6 +736,8 @@ class PlayerWindowController: NSWindowController, NSWindowDelegate {
       player.markClipEnd()
     case .clipExport:
       player.exportClip()
+    case .clipExportShare:
+      player.exportClip(forSharing: true)
     case .clipClear:
       player.clearClipSelection()
     default:

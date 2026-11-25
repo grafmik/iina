@@ -60,6 +60,7 @@
 "iina.clip-mark-in" = "Set clip start";
 "iina.clip-mark-out" = "Set clip end";
 "iina.clip-export" = "Save clip";
+"iina.clip-export-share" = "Save clip for sharing";
 "iina.clip-clear" = "Clear clip selection";
 
 "yes" = "Yes";

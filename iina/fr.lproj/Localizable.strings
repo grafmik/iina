@@ -125,10 +125,12 @@
 "osd.clip.not_local_file" = "Seuls les extraits de fichiers locaux peuvent être enregistrés";
 "osd.clip.export_in_progress" = "Un extrait est déjà en cours d'enregistrement";
 "osd.clip.exporting" = "Enregistrement de l'extrait…";
+"osd.clip.exporting_share" = "Enregistrement pour partager…";
 "osd.clip.exported" = "Extrait enregistré";
 "osd.clip.export_failed" = "Impossible d'enregistrer l'extrait";
 "clip.error.open" = "Le fichier ne peut pas être lu";
 "clip.error.write" = "L'extrait ne peut pas être écrit";
+"clip.error.encode" = "L'extrait ne peut pas être encodé";
 "clip.error.create" = "Le fichier de l'extrait ne peut pas être créé";
 "clip.error.no_stream" = "Le fichier n'a aucune piste vidéo ou audio copiable";
 "clip.error.empty" = "La sélection ne contient rien à copier";
@@ -220,6 +222,7 @@
 "menu.clip_mark_in" = "Définir le début de l'extrait";
 "menu.clip_mark_out" = "Définir la fin de l'extrait";
 "menu.clip_export" = "Enregistrer l'extrait";
+"menu.clip_export_share" = "Enregistrer pour partager";
 "menu.clip_clear" = "Désélectionner l'extrait";
 "menu.chapters" = "Afficher le panneau des chapitres";
 "menu.hide_chapters" = "Masquer le panneau des chapitres";

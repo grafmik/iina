@@ -102,6 +102,7 @@ enum OSDMessage {
   case clipNotLocalFile
   case clipExportInProgress
   case clipExporting(Double)  // fraction written
+  case clipExportingForSharing(Double)  // fraction written
   case clipExported(String)  // filename
   case clipExportFailed(String)  // reason
   case stop
@@ -167,6 +168,7 @@ enum OSDMessage {
     case .clipExportInProgress: fallthrough
     case .clipExported: fallthrough
     case .clipExporting: fallthrough
+    case .clipExportingForSharing: fallthrough
     case .clipNotLocalFile: fallthrough
     case .clipNotSelected: fallthrough
     case .cannotConnect: fallthrough
@@ -382,6 +384,10 @@ enum OSDMessage {
     case .clipExporting(let fraction):
       return (NSLocalizedString("osd.clip.exporting", value: "Saving Clip…", comment: "Saving Clip…"),
               .withProgress(fraction))
+
+    case .clipExportingForSharing(let fraction):
+      return (NSLocalizedString("osd.clip.exporting_share", value: "Saving Clip for Sharing…",
+                                comment: "Saving Clip for Sharing…"), .withProgress(fraction))
 
     case .clipExported(let filename):
       return (NSLocalizedString("osd.clip.exported", value: "Clip Saved", comment: "Clip Saved"), .withText(filename))
