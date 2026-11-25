@@ -43,3 +43,14 @@ In this format an uppercase letter means Shift: `Alt+D` is ⇧⌥D, `Meta+D` is 
 
 After changing shortcuts in IINA, copy the file back from the Library folder to
 `custom/input_conf/` and commit it on the `custom` branch.
+
+## Library check: `check_bundle_dylibs.sh`
+
+Lists the libraries the built app needs but does not contain, and fails if there are any.
+Custom Rebase runs it after the Release build, so that a broken app is never installed.
+
+`other/download_libs.sh` downloads the libraries of the *next* IINA version, not those of the
+tag being built. On 2026-11-25 the new set needed `libssl.4.dylib`, which the 1.5.1 project does not
+copy into the app, and the installed app could not be opened. The Custom Rebase recipe therefore only
+downloads the libraries when upstream changes `iina.xcodeproj` or `other/download_libs.sh`, or when
+`deps/lib` is empty. To repair `deps/lib`, copy the dylibs of a working app's `Contents/Frameworks`.
