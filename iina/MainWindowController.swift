@@ -2172,28 +2172,15 @@ class MainWindowController: PlayerWindowController {
       window?.title = player.getMediaTitle()
     } else {
       window?.representedURL = player.info.currentURL
-      // Workaround for issue #3543, IINA crashes reporting:
-      // NSInvalidArgumentException [NSNextStepFrame _displayName]: unrecognized selector
-      // When running on an M1 under Big Sur and using legacy full screen.
-      //
-      // Changes in Big Sur broke the legacy full screen feature. The MainWindowController method
-      // legacyAnimateToFullscreen had to be changed to get this feature working again. Under
-      // Big Sur that method now calls "window.styleMask.remove(.titled)". Removing titled from the
-      // style mask causes the AppKit method NSWindow.setTitleWithRepresentedFilename to trigger the
-      // exception listed above. This appears to be a defect in the Cocoa framework. The window's
-      // title can still be set directly without triggering the exception. The problem seems to be
-      // isolated to the setTitleWithRepresentedFilename method, possibly only when running on an
-      // Apple Silicon based Mac. Based on the Apple documentation setTitleWithRepresentedFilename
-      // appears to be a convenience method. As a workaround for the issue directly set the window
-      // title.
-      //
-      // This problem has been reported to Apple as:
-      // "setTitleWithRepresentedFilename throws NSInvalidArgumentException: NSNextStepFrame _displayName"
-      // Feedback number FB9789129
-      if Preference.bool(for: .useLegacyFullScreen) {
-        window?.title = player.info.currentURL?.lastPathComponent ?? ""
+      // Set the title directly rather than with setTitleWithRepresentedFilename. Once the represented URL is set, that method
+      // leaves the title of a reused window unchanged: the system title shown in full screen, and the entries of the Window and
+      // Dock menus, kept the name of a file played earlier in the window (issues #6511 and #6586). Calling it also crashed with
+      // legacy full screen on Apple Silicon under Big Sur (issue #3543, Apple feedback FB9789129). The represented URL still
+      // provides the document icon and the path menu.
+      if let url = player.info.currentURL {
+        window?.title = FileManager.default.displayName(atPath: url.path)
       } else {
-        window?.setTitleWithRepresentedFilename(player.info.currentURL?.path ?? "")
+        window?.title = ""
       }
     }
     titleBarView?.updateTitle()
